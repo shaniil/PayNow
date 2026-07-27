@@ -28,10 +28,15 @@ jobs:
 
       - uses: jfrog/frogbot@v3
         env:
-          JF_URL: ${{ secrets.JF_URL }}
           #JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
+          JF_URL: https://${{ vars.JF_URL }}/
+          JFROG_CLI_LOG_LEVEL: "DEBUG"
           JF_GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           JF_GIT_BASE_BRANCH: ${{ matrix.branch }}
+          JF_PROJECT: ${{ vars.JF_PROJECT }}
+          JF_PULL_REQUEST_TITLE_TEMPLATE: "[🐸 Frogbot-Automatic PR] - Aggregated findings"
+          JF_INCLUDE_ALL_VULNERABILITIES: "TRUE" 
+          JF_FAIL: "FALSE"
         with:
           oidc-provider-name: shani-frogbot-integration
           oidc-audience: shani-audience
