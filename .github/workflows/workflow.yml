@@ -15,7 +15,7 @@ on:
       docker_image_name:
         required: true
         type: string
-        default: "ejs-docker"
+        default: "paynow-docker"
         description: "Docker Image name"
       xr_enable_scan:
         required: true
