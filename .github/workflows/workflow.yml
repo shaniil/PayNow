@@ -1,4 +1,4 @@
-name: "shani-github-ejs-build"
+name: "payNow"
 on: 
   workflow_dispatch:
     inputs:
