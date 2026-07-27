@@ -1,4 +1,4 @@
-name: "payNow"
+name: "PayNow"
 on: 
   workflow_dispatch:
     inputs:
