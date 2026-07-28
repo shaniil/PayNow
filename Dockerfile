@@ -15,7 +15,7 @@ RUN --mount=type=secret,id=JF_TOKEN \
       --access-token="$(cat /run/secrets/JF_TOKEN | tr -d '\r\n')" \
       --interactive=false && \
     jf npmc --repo-resolve=shani-npm-remote-github && \
-    jf npm i --omit=dev
+    jf npm i
 EXPOSE 3000
 
 COPY server.js ./
