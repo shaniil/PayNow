@@ -1,5 +1,5 @@
 FROM node:24.8.0
-#ARG JF_TOKEN
+ARG JF_TOKEN
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -10,9 +10,9 @@ RUN apt-get update && \
 RUN curl -fL https://install-cli.jfrog.io | sh
 
 # If you are building your code for production
-#RUN jf c import ${JF_TOKEN} && \
-#    jf npmc --repo-resolve=fgr-npm-remote && \
-#    jf npm i --omit dev
+RUN jf c import ${JF_TOKEN} && \
+    jf npmc --repo-resolve=shani-npm-remote-github && \
+    jf npm i --omit dev
 #EXPOSE 3000
 
 COPY server.js ./
