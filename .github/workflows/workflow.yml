@@ -98,6 +98,8 @@ jobs:
         with:
           push: true
           platforms: linux/amd64
+          secrets: |
+            "JF_TOKEN=${{ secrets.JFROG_TOKEN }}"
           tags: ${{ vars.JF_URL }}/${{ env.DOCKER_REPO }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}
           provenance: false
             
