@@ -10,7 +10,10 @@ RUN curl -fL https://install-cli.jfrog.io | sh
 
 # If you are building your code for production
 RUN --mount=type=secret,id=JF_TOKEN \
-    jf c add default-server --url=https://solenglatest.jfrog.io --access-token=$(cat /run/secrets/JF_TOKEN) && \
+    jf c add default-server \
+      --url=https://solenglatest.jfrog.io \
+      --access-token="$(cat /run/secrets/JF_TOKEN | tr -d '\r\n')" \
+      --interactive=false && \
     jf npmc --repo-resolve=shani-npm-remote-github && \
     jf npm i --omit=dev
 EXPOSE 3000
