@@ -5,7 +5,7 @@ on:
       rt_npm_remote_repo_id:
         required: true
         type: string
-        default: "shani-npm-remote"
+        default: "shani-npm-remote-github"
         description: "Artifactory Repository Name"
       rt_docker_repo:
         required: true
