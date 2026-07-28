@@ -1,5 +1,4 @@
 FROM node:24.8.0
-ARG JF_TOKEN
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -10,10 +9,11 @@ RUN apt-get update && \
 RUN curl -fL https://install-cli.jfrog.io | sh
 
 # If you are building your code for production
-RUN jf c import ${JF_TOKEN} && \
+RUN --mount=type=secret,id=JF_TOKEN \
+    jf c add default-server --url=https://solenglatest.jfrog.io --access-token=$(cat /run/secrets/JF_TOKEN) && \
     jf npmc --repo-resolve=shani-npm-remote-github && \
-    jf npm i --omit dev
-#EXPOSE 3000
+    jf npm i --omit=dev
+EXPOSE 3000
 
 COPY server.js ./
 COPY public public/
