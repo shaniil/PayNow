@@ -106,3 +106,5 @@ jobs:
           # Set the minimum severity for vulnerabilities that should be fixed and commented on in pull requests
           # The following values are accepted: Low, Medium, High or Critical
           JF_MIN_SEVERITY: "Medium"
+
+          JF_SHOW_ALL_SCANNED_PACKAGES: "true
