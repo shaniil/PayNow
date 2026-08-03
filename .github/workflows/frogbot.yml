@@ -1,0 +1,19 @@
+name: "Frogbot Auto-Fix PR"
+on:
+  schedule:
+    - cron: '0 0 * * *' # Daily scan
+  workflow_dispatch: # Allows manual trigger for live demo
+
+jobs:
+  frogbot-fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: jfrog/frogbot@v2
+        env:
+          JF_URL: ${{ secrets.JF_URL }}
+          JF_ACCESS_TOKEN: ${{ secrets.JF_TOKEN }}
+          JF_GIT_PROVIDER: "github"
+          JF_GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          JF_REQUIRE_PROJECT_OPTION: "false"
+          # Enables auto-fixing vulnerable dependencies
+          JF_FIX_MODEL: "true"
